@@ -49,8 +49,8 @@ export class TaskService {
     }
   }
 
-  createTask(title: string): firebase.Promise<any> {
-    return this.tasks$.push(new Task(title));
+  createTask(task: any): firebase.Promise<any> {
+    return this.tasks$.push(new Task(task.title, task.type, task.reason, task.products, task.conclusions));
   }
 
   removeTask(task: ITask): firebase.Promise<any> {

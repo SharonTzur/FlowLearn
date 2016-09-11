@@ -22,16 +22,19 @@
       {{ task.title }}
     </div>
 
-    <form class="task-form" *ngIf="editing" (ngSubmit)="saveTitle()" novalidate>
-      <input
-        [(ngModel)]="title"
-        (blur)="stopEditing()"
-        (keyup.escape)="stopEditing()"
-        autocomplete="off"
-        autoFocus
-        class="task-item__input"
-        name="title"
-        type="text">
+    <form class="task-form" *ngIf="editing" #form="ngForm" (ngSubmit)="saveForm(form.value)" novalidate>
+      <div *ngFor="let prop of task | keys" >
+      <div class="form-input" *ngIf="prop.key != '$key' && prop.key != 'createdAt'"  >
+        <label>{{prop.key}}</label>
+      <input [(ngModel)]="task[prop.key]"
+             autocomplete="on"
+             class="task-item__input"
+             name="{{prop.key}}"
+             type="text">
+      </div>
+      </div>
+
+      <button class="save-btn" type="submit">Save Changes</button>
     </form>
   </div>
 
@@ -40,7 +43,7 @@
       *ngIf="editing"
       (click)="stopEditing()"
       aria-label="Cancel editing"
-      class="task-item__button"
+      class="task-item__button cancel-edit"
       type="button">
       <span class="icon material-icons">&#xe14c;</span>
     </button>

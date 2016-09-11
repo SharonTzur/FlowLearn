@@ -2,10 +2,10 @@ import { AngularFireModule, AuthMethods } from 'angularfire2';
 
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDaEW83qAOozjJbbJP1YYbEHxxfFksdSHQ',
-  authDomain: 'ng2-todo-app.firebaseapp.com',
-  databaseURL: 'https://ng2-todo-app.firebaseio.com',
-  storageBucket: 'ng2-todo-app.appspot.com'
+  apiKey: 'AIzaSyATVo4-ToKFGqopE4MMQbqeWSO70Dn_9hE',
+  authDomain: 'learning-journal.firebaseapp.com',
+  databaseURL: 'https://learning-journal.firebaseio.com',
+  storageBucket: 'learning-journal.appspot.com'
 };
 
 const firebaseAuthConfig = {

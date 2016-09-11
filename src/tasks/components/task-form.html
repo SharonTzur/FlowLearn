@@ -1,0 +1,33 @@
+<div class="g-row">
+
+<a routerLink="/" class="back-btn">Back to activities</a>
+<form #form="ngForm" (ngSubmit)="submit(form.value)">
+    <div>
+        <label>Title:</label>
+        <input type="text" name="title" [(ngModel)]="title">
+    </div>
+    <div>
+        <label>Type:</label>
+        <input type="text" name="type" ngModel>
+    </div>
+    <div>
+        <label>Reason:</label>
+        <input type="text" name="reason" ngModel>
+    </div>
+    <div>
+        <label>Products:</label>
+        <input type="text" name="products" ngModel>
+    </div>
+    <div>
+        <label>Conclusions:</label>
+        <input type="text" name="conclusions" ngModel>
+    </div>
+
+    <button class="create-btn" type="submit">Submit</button>
+</form>
+
+<pre>
+{{form.value | json}}
+    </pre>
+
+    </div>

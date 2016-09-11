@@ -9,20 +9,24 @@ import { TaskService } from '../services/task-service';
 
 @Component({
   template: `
-    <div class="g-row">
-      <div class="g-col">
-        <task-form (createTask)="taskService.createTask($event)"></task-form>
+   
+      <div class="g-row">
+      <a class="create-btn" routerLink="create">Add Activity</a>
+        <!--<task-form (createTask)="taskService.createTask($event)"></task-form>-->
       </div>
 
-      <div class="g-col">
+      <div  class="g-row">
         <task-list
           [filter]="filter | async"
           [tasks]="taskService.visibleTasks$"
           (remove)="taskService.removeTask($event)"
           (update)="taskService.updateTask($event.task, $event.changes)"></task-list>
       </div>
-    </div>
-  `
+   
+  `,
+  styles: [
+    require('./tasks.scss')
+  ],
 })
 
 export class TasksComponent {
@@ -33,4 +37,5 @@ export class TasksComponent {
       .pluck('completed')
       .do((value: string) => taskService.filterTasks(value));
   }
+
 }

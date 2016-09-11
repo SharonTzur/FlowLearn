@@ -11,10 +11,8 @@ import { AuthService } from '../services/auth-service';
     <div class="g-row sign-in">
       <div class="g-col">
         <h1 class="sign-in__heading">Sign in</h1>
-        <button class="sign-in__button" (click)="signInWithGithub()" type="button">GitHub</button>
         <button class="sign-in__button" (click)="signInWithGoogle()" type="button">Google</button>
-        <button class="sign-in__button" (click)="signInWithTwitter()" type="button">Twitter</button>
-      </div>
+       </div>
     </div>
   `
 })
@@ -29,7 +27,9 @@ export class SignInComponent {
 
   signInWithGoogle(): void {
     this.auth.signInWithGoogle()
-      .then(() => this.postSignIn());
+      .then((res) => {
+        this.auth.registerUser(res.auth);
+        this.postSignIn()});
   }
 
   signInWithTwitter(): void {

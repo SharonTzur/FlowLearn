@@ -1,13 +1,13 @@
 {
-  "name": "todo-angular2-firebase",
+  "name": "flow-learn",
   "version": "0.8.0",
-  "description": "Todo app with Angular2, AngularFire2, and Firebase",
-  "homepage": "https://github.com/r-park/todo-angular2-firebase",
+  "description": "Angular2, AngularFire2, and Firebase",
+  "homepage": "https://github.com/SharonTzur/FlowLearn.git",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/r-park/todo-angular2-firebase.git"
+    "url": "git+https://github.com/SharonTzur/FlowLearn.git"
   },
-  "license": "MIT",
+  "license": "",
   "private": true,
   "engines": {
     "node": ">=5.11"

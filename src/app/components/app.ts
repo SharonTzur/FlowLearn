@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/auth';
+import {AuthService} from "../../auth/services/auth-service";
 
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from 'src/auth';
   ],
   template: `
     <app-header
-      [authenticated]="auth.authenticated"
+      [authenticated]="auth.authenticated" [displayName]="auth.displayName"
       (signOut)="signOut()"></app-header>
     
     <main class="main">
@@ -19,6 +19,7 @@ import { AuthService } from 'src/auth';
 })
 
 export class AppComponent {
+  displayName:string;
   constructor(private auth: AuthService) {}
 
   signOut(): void {
