@@ -9,6 +9,10 @@ export class AuthService {
     private currentUser$: FirebaseListObservable<any[]>;
 
     constructor(public auth$: FirebaseAuth, private af: AngularFire) {
+        auth$.subscribe((state: FirebaseAuthState) => {
+        this.authState = state;
+
+    });
         const path = `/users`;
         this.users$ = this.af.database.list(`/users/`);
         this.currentUser$ = af.database.list(path, {
@@ -17,10 +21,7 @@ export class AuthService {
                 equalTo:this.authenticated ? this.authState.uid : ''
             }
         });
-        auth$.subscribe((state: FirebaseAuthState) => {
-            this.authState = state;
 
-        });
     }
 
     get authenticated(): boolean {
