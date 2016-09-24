@@ -1,6 +1,6 @@
 {
   "rules": {
-    "users":{
+    "users": {
       ".read": true,
       ".write": true,
       "$uid": {
@@ -8,12 +8,13 @@
         ".write": true
       }
     },
-
     "tasks": {
       "$uid": {
-        ".read": "auth !== null && auth.uid === $uid",
-        ".write": "auth !== null && auth.uid === $uid",
-        ".indexOn": ["completed"]
+        ".read": "auth !== null && auth.uid === $uid && $auth.uid === '7Z0yut1KjWd6PGoldJq9EUgBFRz1' ",
+        ".write": "auth !== null && auth.uid === $uid && $auth.uid === '7Z0yut1KjWd6PGoldJq9EUgBFRz1'",
+        ".indexOn": [
+          "completed"
+        ]
       }
     }
   }

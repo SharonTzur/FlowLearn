@@ -42,6 +42,8 @@ label{
 }
 
 input {
+  direction: rtl;
+  text-align:right;
   outline: none;
   border: 0;
   border-bottom: 1px dotted #666;
@@ -60,7 +62,7 @@ input {
     font-size: rem(32px);
   }
 
-  &::placeholder {
+ /* &::placeholder {
     color: #999;
     opacity: 1; // firefox native placeholder style has opacity < 1
   }
@@ -68,7 +70,7 @@ input {
   &:focus::placeholder {
     color: #777;
     opacity: 1;
-  }
+  }*/
 
   // webkit input doesn't inherit font-smoothing from ancestors
   -webkit-font-smoothing: antialiased;

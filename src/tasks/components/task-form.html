@@ -1,33 +1,51 @@
 <div class="g-row">
+    <a routerLink="/" class="back-btn">{{ 'back to activities' | translate }}</a>
 
-<a routerLink="/" class="back-btn">Back to activities</a>
-<form #form="ngForm" (ngSubmit)="submit(form.value)">
-    <div>
-        <label>Title:</label>
-        <input type="text" name="title" [(ngModel)]="title">
-    </div>
-    <div>
-        <label>Type:</label>
-        <input type="text" name="type" ngModel>
-    </div>
-    <div>
-        <label>Reason:</label>
-        <input type="text" name="reason" ngModel>
-    </div>
-    <div>
-        <label>Products:</label>
-        <input type="text" name="products" ngModel>
-    </div>
-    <div>
-        <label>Conclusions:</label>
-        <input type="text" name="conclusions" ngModel>
-    </div>
 
-    <button class="create-btn" type="submit">Submit</button>
-</form>
 
-<pre>
-{{form.value | json}}
-    </pre>
+    <form *ngIf="filter" class="task-form" #form="ngForm" (ngSubmit)="submit(form.value)" novalidate>
+        <div *ngFor="let prop of task | async | keys">
+            <div class="form-input" *ngIf="prop.key != '$key' && prop.key != 'createdAt'">
+                <label>{{prop.key | translate}}</label>
+                <input
+                        value="{{(task|async)[prop.key]}}"
+                        autocomplete="on"
+                        class="task-item__input"
+                        name="{{prop.key}}"
+                        type="text"
+                        ngModel="{{(task|async)[prop.key]}}">
+            </div>
+        </div>
+        <button class="create-btn" type="submit">{{"submit" | translate}}</button>
+    </form>
 
-    </div>
+    <form *ngIf="!filter" #form="ngForm" (ngSubmit)="submit(form.value)">
+        <div>
+            <label>{{"title" | translate}}:</label>
+            <input type="text" name="title" ngModel>
+        </div>
+        <div>
+            <label>{{"content" | translate}}:</label>
+            <input type="text" name="content" ngModel>
+        </div>
+        <div>
+            <label>{{"type" | translate}}:</label>
+            <input type="text" name="type" ngModel>
+        </div>
+        <div>
+            <label>{{"reason" | translate}}:</label>
+            <input type="text" name="reason" ngModel>
+        </div>
+        <div>
+            <label>{{"products" | translate}}:</label>
+            <input type="text" name="products" ngModel>
+        </div>
+        <div>
+            <label>{{"conclusions" | translate}}:</label>
+            <input type="text" name="conclusions" ngModel>
+        </div>
+
+        <button class="create-btn" type="submit">{{"submit" | translate}}</button>
+    </form>
+
+</div>

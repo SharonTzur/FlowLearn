@@ -15,9 +15,9 @@ import { TaskService } from './services/task-service';
 
 const routes: Routes = [
   {path: 'tasks', component: TasksComponent, canActivate: [AuthGuard]},
+  {path: 'tasks/create/:id', component: TaskFormComponent, canActivate: [AuthGuard]},
   {path: 'tasks/create', component: TaskFormComponent, canActivate: [AuthGuard]}
 ];
-
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   providers: [
     TaskService

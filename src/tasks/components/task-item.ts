@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {ITask} from '../models/task';
 import {KeysPipe} from "../pipes/KeysPipe";
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -17,12 +18,15 @@ export class TaskItemComponent {
     @Input() task: ITask;
     @Output() remove = new EventEmitter(false);
     @Output() update = new EventEmitter(false);
-
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        ) {}
     editing: boolean = false;
     value: any;
 
     editTitle(): void {
-        this.editing = true;
+        this.router.navigate(['tasks/create', this.task.$key]);
 
     }
 

@@ -5,13 +5,14 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { TaskService } from '../services/task-service';
+import {TranslatePipe} from "../../translate/translate.pipe";
 
 
 @Component({
   template: `
    
       <div class="g-row">
-      <a class="create-btn" routerLink="create">Add Activity</a>
+      <a class="create-btn" routerLink="create">{{"add activity" | translate}}</a>
         <!--<task-form (createTask)="taskService.createTask($event)"></task-form>-->
       </div>
 
@@ -27,6 +28,9 @@ import { TaskService } from '../services/task-service';
   styles: [
     require('./tasks.scss')
   ],
+  pipes: [
+      TranslatePipe
+  ]
 })
 
 export class TasksComponent {

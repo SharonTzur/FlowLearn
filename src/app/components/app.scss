@@ -6,4 +6,12 @@
   background: #6f405c;
   color: white;
   padding-bottom: 90px;
+  &.he {
+    direction: rtl;
+    text-align:right;
+  }
+
+  &.en {
+
+  }
 }

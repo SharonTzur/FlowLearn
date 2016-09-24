@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth-service';
 
 
 @Component({
+
   styles: [
     require('./sign-in.scss')
   ],
@@ -18,7 +19,10 @@ import { AuthService } from '../services/auth-service';
 })
 
 export class SignInComponent {
-  constructor(private auth: AuthService, private router: Router) {}
+
+  constructor(private auth: AuthService, private router: Router) {
+
+  }
 
   signInWithGithub(): void {
     this.auth.signInWithGithub()
@@ -26,8 +30,7 @@ export class SignInComponent {
   }
 
   signInWithGoogle(): void {
-    this.auth.signInWithGoogle()
-      .then((res) => {
+    this.auth.signInWithGoogle().then((res) => {
         this.auth.registerUser(res.auth);
         this.postSignIn()});
   }

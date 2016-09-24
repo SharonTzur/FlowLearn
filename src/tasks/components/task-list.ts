@@ -10,11 +10,11 @@ import { ITask } from '../models/task';
     require('./task-list.scss')
   ],
   template: `
-    <ul class="task-filters">
+  <!--  <ul class="task-filters">
       <li><a [class.active]="!filter" [routerLink]="['/tasks']">View All</a></li>
       <li><a [class.active]="filter === 'false'" [routerLink]="['/tasks', {completed: false}]">Active</a></li>
       <li><a [class.active]="filter === 'true'" [routerLink]="['/tasks', {completed: true}]">Completed</a></li>
-    </ul>
+    </ul>-->
     
     <div class="task-list">
       <task-item
