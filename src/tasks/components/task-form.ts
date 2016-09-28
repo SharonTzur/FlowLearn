@@ -1,9 +1,9 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output, Input, OnChanges} from '@angular/core';
 import {TaskService} from "../services/task-service";
 import {ActivatedRoute, Router, Params} from "@angular/router";
 import {KeysPipe} from "../pipes/KeysPipe";
 import {TranslatePipe} from "../../translate/translate.pipe";
-
+import {ITask} from "../models/task";
 
 @Component({
     selector: 'task-form',
@@ -12,17 +12,20 @@ import {TranslatePipe} from "../../translate/translate.pipe";
     ],
     template: require('./task-form.html'),
     changeDetection: ChangeDetectionStrategy.OnPush,
-    pipes: [KeysPipe, TranslatePipe]
 
 })
-export class TaskFormComponent {
-    filter: string;
-    task: any = {
-        content : '',
-        title: ''
-    };
-    title: string = '';
+export class TaskFormComponent implements OnChanges{
+
     value: any;
+    editType: boolean = false;
+    editReason: boolean = false;
+    editProducts: boolean = false;
+    editConclusions: boolean = false;
+    editContent: boolean = true;
+
+    @Input() task:any;
+    @Output() onChange:EventEmitter<any> = new EventEmitter();
+    @Output() goBackToTasks:EventEmitter<any> = new EventEmitter();
 
     constructor(public taskService: TaskService, private route: ActivatedRoute,
                 private router: Router,) {
@@ -30,23 +33,32 @@ export class TaskFormComponent {
     }
 
     ngOnInit() {
-        this.route.params.forEach((params: Params) => {
-            this.filter = params['id'];
-        });
 
-        this.task = this.taskService.findTask(this.filter);
     }
 
-    ngOnChanges(changes) {
+    internalModel:any;
+
+    ngOnChanges(changes:any):void {
+        var taskChange = changes.task.currentValue;
+        if (taskChange) {
+            this.internalModel = taskChange;
+        }
     }
 
-    clear(): void {
-        this.title = '';
+    onSave():void {
+        this.onChange.emit(this.internalModel);
+        event.preventDefault();
+
     }
 
-    submit(form: any): void {
-        this.value = form;
-        this.taskService.createTask(this.value);
-        this.router.navigate(['/tasks']);
+    changeTab(tab) {
+        this.editType = false;
+        this.editReason = false;
+        this.editProducts = false;
+        this.editConclusions = false;
+        this.editContent = false;
+        this[tab] = !this[tab];
     }
+
+
 }

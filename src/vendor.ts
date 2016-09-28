@@ -5,6 +5,9 @@ import '@angular/forms';
 import '@angular/platform-browser-dynamic';
 import '@angular/router';
 
+//prime-ng
+import 'primeng/primeng';
+
 // RxJS
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/do';

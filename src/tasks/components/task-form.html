@@ -1,51 +1,35 @@
-<div class="g-row">
-    <a routerLink="/" class="back-btn">{{ 'back to activities' | translate }}</a>
 
-
-
-    <form *ngIf="filter" class="task-form" #form="ngForm" (ngSubmit)="submit(form.value)" novalidate>
-        <div *ngFor="let prop of task | async | keys">
-            <div class="form-input" *ngIf="prop.key != '$key' && prop.key != 'createdAt'">
-                <label>{{prop.key | translate}}</label>
-                <input
-                        value="{{(task|async)[prop.key]}}"
-                        autocomplete="on"
-                        class="task-item__input"
-                        name="{{prop.key}}"
-                        type="text"
-                        ngModel="{{(task|async)[prop.key]}}">
-            </div>
-        </div>
-        <button class="create-btn" type="submit">{{"submit" | translate}}</button>
-    </form>
-
-    <form *ngIf="!filter" #form="ngForm" (ngSubmit)="submit(form.value)">
+    <form #form="ngForm" >
         <div>
             <label>{{"title" | translate}}:</label>
-            <input type="text" name="title" ngModel>
+            <input type="text" name="title" [(ngModel)]="task.title">
         </div>
-        <div>
+        <div *ngIf="editContent && !editType && !editReason && !editProducts && !editConclusions">
             <label>{{"content" | translate}}:</label>
-            <input type="text" name="content" ngModel>
+            <textarea type="text" name="content" class="content-area" [(ngModel)]="task.content"> </textarea>
         </div>
-        <div>
+        <div *ngIf="editType && !editReason && !editProducts && !editConclusions">
             <label>{{"type" | translate}}:</label>
-            <input type="text" name="type" ngModel>
+            <input type="text" name="type" [(ngModel)]="task.type">
         </div>
-        <div>
+        <div *ngIf="editReason && !editType && !editProducts && !editConclusions">
             <label>{{"reason" | translate}}:</label>
-            <input type="text" name="reason" ngModel>
+            <input type="text" name="reason" [(ngModel)]="task.reason">
         </div>
-        <div>
+        <div *ngIf="editProducts && !editReason && !editType && !editConclusions">
             <label>{{"products" | translate}}:</label>
-            <input type="text" name="products" ngModel>
+            <input type="text" name="products" [(ngModel)]="task.products">
         </div>
-        <div>
+        <div *ngIf="editConclusions && !editReason && !editProducts && !editType">
             <label>{{"conclusions" | translate}}:</label>
-            <input type="text" name="conclusions" ngModel>
+            <input type="text" name="conclusions" [(ngModel)]="task.conclusions">
         </div>
-
-        <button class="create-btn" type="submit">{{"submit" | translate}}</button>
+        <div class="actions-panel">
+        <div class="edit-content action-button" [ngClass]="{active: editContent}"(click)="changeTab('editContent')">{{"content" | translate}}</div>
+        <div class="edit-type action-button" [ngClass]="{active: editType}" (click)="changeTab('editType')">{{"type" | translate}}</div>
+        <div class="edit-reason action-button" [ngClass]="{active: editReason}" (click)="changeTab('editReason')">{{"reason" | translate}}</div>
+        <div class="edit-products action-button" [ngClass]="{active: editProducts}" (click)="changeTab('editProducts')">{{"products" | translate}}</div>
+        <div class="edit-conclusions action-button" [ngClass]="{active: editConclusions}" (click)="changeTab('editConclusions')">{{"conclusions" | translate}}</div>
+        </div>
+        <button class="create-btn" type="button" (click)="onSave()">{{"submit" | translate}}</button>
     </form>
-
-</div>

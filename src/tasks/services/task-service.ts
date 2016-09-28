@@ -60,14 +60,14 @@ export class TaskService {
     }
 
     createTask(task: any): firebase.Promise<any> {
-        return this.tasks$.push(new Task(task.title, task.content, task.type, task.reason, task.products, task.conclusions));
+        return this.tasks$.push(task);
     }
 
     removeTask(task: ITask): firebase.Promise<any> {
         return this.tasks$.remove(task.$key);
     }
 
-    updateTask(task: ITask, changes: any): firebase.Promise<any> {
-        return this.tasks$.update(task.$key, changes);
+    updateTask(task: any, changes: any): any {
+         return this.tasks$.update(task["$key"], changes);
     }
 }

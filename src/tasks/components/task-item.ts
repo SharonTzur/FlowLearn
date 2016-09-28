@@ -26,7 +26,7 @@ export class TaskItemComponent {
     value: any;
 
     editTitle(): void {
-        this.router.navigate(['tasks/create', this.task.$key]);
+        this.router.navigate(['/create', this.task.$key]);
 
     }
 

@@ -14,8 +14,39 @@
   @include media-query(540) {
     margin: 80px 0 20px;
   }
-}
 
+}
+.main {
+  background     : #6f405c;
+  color          : white;
+  padding-bottom : 90px;
+  font-family    : 'Assistant', 'Open Sans', sans-serif;
+
+  &.he {
+    direction  : rtl;
+    text-align : right;
+    .back-btn{
+      color           : white;
+      text-decoration : none;
+      border          : 1px solid white;
+      border-radius   : 10px;
+      padding         : 10px;
+      margin-top      : 30px;
+      margin-bottom      : 30px;
+      display         : block;
+      text-align      : center;
+      width:200px;
+      @include fa-icon(arrow-right);
+
+      &:before {
+        padding-right: 5px;
+        color: #fff;
+        font-family: 'FontAwesome';
+        line-height: 20px;
+      }
+    }
+  }
+}
 .back-btn{
   color           : white;
   text-decoration : none;
@@ -36,26 +67,95 @@
     line-height: 20px;
   }
 }
+.actions-panel {
+  text-align:center;
+  .action-button {
+    display       : inline-block;
+    width         : 6.5vw;
+    height        : 6.5vw;
+    border        : 1px solid white;
+    border-radius : 50% 50%;
+    margin        : 0.5vw;
+    text-align    : center;
+    line-height   : 2vw;
+    padding-top   : 2vw;
+    &:hover{
+      background-color: #7d4565;
+      cursor:pointer;
+    }
+    &.active{
+      border        : 3px solid white;
+      background-color: #96557b;
+    }
+    &.edit-content {
+      @include fa-icon(edit);
+      &:before {
+        display     : block;
+        font-size   : 4rem;
+        color       : #fff;
+        font-family : 'FontAwesome';
+      }
+    }
+    &.edit-type {
+      @include fa-icon(flag);
+      &:before {
+        display     : block;
+        font-size   : 4rem;
+        color       : #fff;
+        font-family : 'FontAwesome';
+      }
+    }
+    &.edit-reason {
+      @include fa-icon(search-plus);
+      &:before {
+        display     : block;
+        font-size   : 4rem;
+        color       : #fff;
+        font-family : 'FontAwesome';
+      }
+    }
+    &.edit-products {
+      @include fa-icon(gift);
+      &:before {
+        display     : block;
+        font-size   : 4rem;
+        color       : #fff;
+        font-family : 'FontAwesome';
+      }
+    }
+    &.edit-conclusions {
+      @include fa-icon(bullhorn);
+      &:before {
+        display     : block;
+        font-size   : 4rem;
+        color       : #fff;
+        font-family : 'FontAwesome';
+      }
+    }
+  }
+}
 
 label{
   display:block;
 }
 
 input {
+  font-family: 'Assistant','Open Sans', sans-serif;
   direction: rtl;
   text-align:right;
   outline: none;
-  border: 0;
-  border-bottom: 1px dotted #666;
+  border: 1px solid white;
   width: 100%;
   height: 50px;
   font-family: inherit;
+  margin-top: 20px;
+  margin-bottom: 30px;
   font-weight: 300;
   color: #fff;
   background: transparent;
   border-radius: 10px;
   padding:10px;
-  font-size: rem(24px);
+  font-size: rem(16px);
 
   @include media-query(540) {
     height: 61px;
@@ -79,6 +179,22 @@ input {
   &::-ms-clear {
     display: none;
   }
+}
+.content-area{
+  width:100%;
+  height: 40vh;
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: 1.5rem;
+  outline: none;
+  resize: none;
+  overflow: auto;
+  font-family: 'Assistant','Open Sans', sans-serif;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
 }
 
 
