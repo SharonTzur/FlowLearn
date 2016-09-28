@@ -47,12 +47,12 @@ export class TaskCreateComponent {
         this.value = form;
         if (this.value.$key) {
             this.changesObj = {
-                title: this.value.title,
-                content: this.value.content,
-                type: this.value.type,
-                reason: this.value.reason,
-                products: this.value.products,
-                conclusions: this.value.conclusions
+                title: this.value.title || "",
+                content: this.value.content|| "",
+                type: this.value.type|| "",
+                reason: this.value.reason|| "",
+                products: this.value.products|| "",
+                conclusions: this.value.conclusions|| ""
             };
             this.taskService.updateTask(this.task, this.changesObj).then((updatedTask)=> {
                 this.goBackToTasks();
