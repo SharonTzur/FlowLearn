@@ -16,19 +16,37 @@
   .ui-autocomplete {
     width : 100%;
 
-    .ui-inputtext{
-      color                  : #fff;
-      font-size              : 30px;
+    .ui-inputtext {
+      color     : #fff;
+      font-size : 1.5rem;
+      font-family            : 'Assistant', 'Open Sans', sans-serif;
 
     }
-    .ui-autocomplete-token-icon{
-      font-size: 20px;
+    .ui-autocomplete-token-icon {
+      font-size : 20px;
 
     }
-    .ui-autocomplete-token-label{
-      background-color: #96557b;
-      padding: 0 1.1em 0 .5em;
+    .ui-autocomplete-token-label {
+      background-color : #96557b;
+      padding          : 0 1.1em 0 .5em;
 
+    }
+    @media screen and (max-width : 640px) {
+      .ui-inputtext {
+        color     : #fff;
+        font-size : 1.5rem;
+      }
+      .ui-autocomplete-token-icon {
+        font-size : 10px;
+
+      }
+      .ui-autocomplete-token-label {
+        background-color : #96557b;
+        padding          : 0 1.1em 0 .5em;
+        font-size : 15px;
+
+
+      }
     }
     .ui-autocomplete-multiple {
       font-family            : 'Assistant', 'Open Sans', sans-serif;
@@ -39,7 +57,7 @@
       width                  : 100%;
       height                 : 25px;
       margin-top             : 10px;
-      margin-bottom: 80px;
+      margin-bottom          : 80px;
       font-weight            : 300;
       color                  : #fff;
       background             : transparent;
@@ -47,9 +65,9 @@
       padding                : 10px;
       font-size              : rem(14px);
 
-      @include media-query(540) {
-        height    : 61px;
-        font-size : rem(28px);
+      @media screen and (max-width : 640px) {
+        height    : 80px !important;
+        font-size : rem(28px) !important;
       }
 
       // webkit input doesn't inherit font-smoothing from ancestors
@@ -61,13 +79,26 @@
       }
     }
   }
-  .ui-autocomplete-panel{
-    top: 78px!important;
-
-    .ui-autocomplete-list{
-      .ui-autocomplete-list-item{
+  .ui-autocomplete-panel {
+    top : 78px !important;
+    .ui-autocomplete-list {
+      .ui-autocomplete-list-item {
         display : inline-block;
-        width:25%;
+        width   : 25%;
+      }
+    }
+  }
+  @media screen and(max-width : 640px) {
+    .ui-autocomplete-panel {
+      top: 90px !important;
+      background-color: #6F405C;
+      height:auto;
+      display: block;
+      .ui-autocomplete-list {
+        .ui-autocomplete-list-item {
+          width      : 100%;
+          text-align : center;
+        }
       }
     }
   }

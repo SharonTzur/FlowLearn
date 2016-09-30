@@ -26,6 +26,11 @@
     direction  : rtl;
     text-align : right;
     .back-btn{
+      @media screen and(max-width: 640px){
+        width: 49%;
+        height: 70px;
+
+      }
       color           : white;
       text-decoration : none;
       border          : 1px solid white;
@@ -52,6 +57,7 @@
     }
   }
   }
+
 .back-btn{
   color           : white;
   text-decoration : none;
@@ -63,6 +69,11 @@
   display         : inline-block;
   text-align      : center;
   width:200px;
+  @media screen and(max-width: 640px){
+    width: 49%;
+    height: 70px;
+
+  }
   @include fa-icon(arrow-left);
   &:hover{
     background-color: #7d4565;
@@ -76,7 +87,11 @@
     line-height: 20px;
   }
 }
+
 .add-photo-btn{
+  @media screen and(max-width: 640px){
+    width: 49%;
+  }
   color           : white;
   text-decoration : none;
   border          : 1px solid white;
@@ -105,6 +120,7 @@
 }
 .actions-panel {
   text-align:center;
+
   .action-button {
     display       : inline-block;
     width         : 6.5vw;
@@ -115,6 +131,16 @@
     text-align    : center;
     line-height   : 2vw;
     padding-top   : 2vw;
+    @media screen and (max-width: 640px) {
+      width         : 30vw;
+      height        : 30vw;
+      line-height: 10vw;
+      padding-top: 8vw;
+      &:before{
+        font-size: 40px!important;
+
+      }
+    }
     &:hover{
       background-color: #7d4565;
       cursor:pointer;

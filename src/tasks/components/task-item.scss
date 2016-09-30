@@ -19,6 +19,10 @@
   height: 300px;
   display: inline-block;
 
+  @media screen and (max-width : 640px) {
+    width: 100%;
+  }
+
   @include media-query(540) {
     font-size : rem(24px);
   }
