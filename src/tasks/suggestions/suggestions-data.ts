@@ -2,7 +2,12 @@ export const ACTION_SUGGESTIONS: string[] = [
     'new',
     'update',
     'feedback',
-    'interaction with another activity'
+    'interaction with another activity',
+    "חדש",
+    "עדכון",
+    "משוב",
+    "אינטראקציה עם פעילות אחרת",
+    "הרחבה"
 ];
 
 export const TYPE_SUGGESTIONS: string[] = [
@@ -17,7 +22,22 @@ export const TYPE_SUGGESTIONS: string[] = [
     'homework',
     'test',
     'chemistry',
-    'biology'
+    'biology',
+    "מתמטיקה",
+    "פיזיקה",
+    "מטלה",
+    "שיעורי בית",
+    "למידה עצמית",
+    "לימוד עצמי",
+    "מחקר",
+    "חקירה",
+    "ניסוי",
+    "למידה",
+    "עזרה",
+    "מבחן",
+    "מבדק",
+    "כימיה",
+    "ביולוגיה"
 ];
 
 export const REASON_SUGGESTIONS: string[] = [
@@ -25,6 +45,11 @@ export const REASON_SUGGESTIONS: string[] = [
     'will',
     'for another person',
     'duty',
-    'external factor'
+    'external factor',
+"פיתוח מים חדש",
+    "רצון עצמי",
+    "בשביל אדם אחר",
+    "חובה",
+    "גורם חיצוני"
 
 ];
