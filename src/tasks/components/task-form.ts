@@ -68,7 +68,6 @@ export class TaskFormComponent implements OnChanges{
     }
 
     typeEnter(event){
-        console.log(event);
         if(this.typeResults.length == 0){
             this.task.type.push(event.target.value);
             event.target.value="";
