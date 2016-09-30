@@ -10,6 +10,7 @@ export interface ITask {
     reason: string;
     products: string;
     conclusions: string;
+    image: string;
 }
 
 export class Task implements ITask {
@@ -21,13 +22,16 @@ export class Task implements ITask {
     reason: string;
     products: string;
     conclusions: string;
+    image: string;
 
-    constructor(title: string, content: string, type: string, reason: string, products: string, conclusions: string) {
+
+    constructor(title: string, content: string, type: string, reason: string, products: string, conclusions: string, image:string) {
         this.title = title;
         this.type = type;
         this.content = content;
         this.reason = reason;
         this.products = products;
         this.conclusions = conclusions;
+        this.image = image;
     }
 }

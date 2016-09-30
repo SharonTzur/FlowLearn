@@ -2,7 +2,7 @@
   [ngClass]="{'task-item--completed': task.completed, 'task-item--editing': editing}"
   class="task-item"
   tabindex="0">
-
+<div class="item-info-row">
   <div class="cell">
     <button
       *ngIf="!editing"
@@ -63,5 +63,9 @@
       type="button">
       <span class="icon material-icons">delete</span>
     </button>
+  </div>
+</div>
+  <div class="task-img">
+    <img [src]="task.image">
   </div>
 </div>

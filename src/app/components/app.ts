@@ -21,7 +21,6 @@ import {TranslatePipe} from "../../translate/translate.pipe";
     </main>
   `
 })
-
 export class AppComponent {
     displayName: string;
     public currentLang: string;

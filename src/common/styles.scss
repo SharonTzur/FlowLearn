@@ -1,14 +1,73 @@
-@import
-'styles/base',
+@import 'styles/base',
 '~minx/src/reset',
 '~minx/src/elements',
 'styles/grid';
 
-
 [hidden] {
-  display: none !important;
+  display : none !important;
 }
 
 ::selection {
-  background: rgba(200,200,255,.1);
+  background : rgba(200, 200, 255, .1);
+}
+
+.type-autocomplete {
+  width : 100%;
+  .ui-autocomplete {
+    width : 100%;
+
+    .ui-inputtext{
+      color                  : #fff;
+      font-size              : 30px;
+
+    }
+    .ui-autocomplete-token-icon{
+      font-size: 20px;
+
+    }
+    .ui-autocomplete-token-label{
+      background-color: #96557b;
+      padding: 0 1.1em 0 .5em;
+
+    }
+    .ui-autocomplete-multiple {
+      font-family            : 'Assistant', 'Open Sans', sans-serif;
+      direction              : rtl;
+      text-align             : right;
+      outline                : none;
+      border                 : 1px solid white;
+      width                  : 100%;
+      height                 : 25px;
+      margin-top             : 10px;
+      margin-bottom: 80px;
+      font-weight            : 300;
+      color                  : #fff;
+      background             : transparent;
+      border-radius          : 10px;
+      padding                : 10px;
+      font-size              : rem(14px);
+
+      @include media-query(540) {
+        height    : 61px;
+        font-size : rem(28px);
+      }
+
+      // webkit input doesn't inherit font-smoothing from ancestors
+      -webkit-font-smoothing : antialiased;
+
+      // remove `x`
+      &::-ms-clear {
+        display : none;
+      }
+    }
+  }
+  .ui-autocomplete-panel{
+    top: 78px!important;
+
+    .ui-autocomplete-list{
+      .ui-autocomplete-list-item{
+        display : inline-block;
+      }
+    }
+  }
 }

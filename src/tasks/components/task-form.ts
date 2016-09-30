@@ -4,6 +4,7 @@ import {ActivatedRoute, Router, Params} from "@angular/router";
 import {KeysPipe} from "../pipes/KeysPipe";
 import {TranslatePipe} from "../../translate/translate.pipe";
 import {ITask} from "../models/task";
+import {AutoCompleteModule} from 'primeng/primeng';
 
 @Component({
     selector: 'task-form',
@@ -22,6 +23,9 @@ export class TaskFormComponent implements OnChanges{
     editProducts: boolean = false;
     editConclusions: boolean = false;
     editContent: boolean = true;
+    typeQuery: string;
+    typeResults: string[] = this.taskService.typeSuggestions;
+
 
     @Input() task:any;
     @Output() onChange:EventEmitter<any> = new EventEmitter();
@@ -50,7 +54,6 @@ export class TaskFormComponent implements OnChanges{
         event.preventDefault();
 
     }
-
     changeTab(tab) {
         this.editType = false;
         this.editReason = false;
@@ -60,5 +63,15 @@ export class TaskFormComponent implements OnChanges{
         this[tab] = !this[tab];
     }
 
+    searchType(event) {
+        this.typeResults = this.taskService.getTypeResults(event.query);
+    }
 
+    typeEnter(event){
+        console.log(event);
+        if(this.typeResults.length == 0){
+            this.task.type.push(event.target.value);
+            event.target.value="";
+        }
+    }
 }

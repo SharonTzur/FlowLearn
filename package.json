@@ -28,8 +28,8 @@
     "server": "cross-env NODE_ENV=development nodemon -w 'server/**/*.*' ./server/main.js",
     "server:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "start": "npm run server:dev",
-    "test": "cross-env NODE_ENV=test karma start --single-run --coverage",
-    "test:watch": "cross-env NODE_ENV=test karma start --reporters dots"
+    "test": "",
+    "test:watch": "cross-env NODE_ENV=test  start --reporters dots"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.5",
@@ -42,6 +42,7 @@
     "angularfire2": "2.0.0-beta.4",
     "core-js": "~2.4.1",
     "firebase": "3.3.0",
+    "ng2-uploader": "^1.2.0",
     "primeng": "^1.0.0-beta.16",
     "rxjs": "5.0.0-beta.6",
     "zone.js": "~0.6.17"

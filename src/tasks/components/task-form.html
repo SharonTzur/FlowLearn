@@ -1,35 +1,53 @@
+<form #form="ngForm">
+    <div>
+        <label>{{"title" | translate}}:</label>
+        <input type="text" name="title" [(ngModel)]="task.title">
+    </div>
+    <div *ngIf="editContent && !editType && !editReason && !editProducts && !editConclusions">
+        <label>{{"content" | translate}}:</label>
+        <textarea type="text" name="content" class="content-area" [(ngModel)]="task.content"> </textarea>
+    </div>
+    <div *ngIf="editType && !editReason && !editProducts && !editConclusions">
+        <label>{{"type" | translate}}:</label>
+        <!--<input type="text" name="type" [(ngModel)]="task.type">-->
 
-    <form #form="ngForm" >
-        <div>
-            <label>{{"title" | translate}}:</label>
-            <input type="text" name="title" [(ngModel)]="task.title">
+        <p-autoComplete  (keydown.Enter)="typeEnter($event)" class="type-autocomplete" minLength="1" name="type"   [multiple]="true" [(ngModel)]="task.type" [suggestions]="typeResults"
+                        (completeMethod)="searchType($event)" >
+            <template let-typeQuery>
+                <div class="ui-helper-clearfix choice-button">
+                    {{typeQuery}}
+                </div>
+            </template>
+        </p-autoComplete>
+    </div>
+    <div *ngIf="editReason && !editType && !editProducts && !editConclusions">
+        <label>{{"reason" | translate}}:</label>
+        <input type="text" name="reason" [(ngModel)]="task.reason">
+    </div>
+    <div *ngIf="editProducts && !editReason && !editType && !editConclusions">
+        <label>{{"products" | translate}}:</label>
+        <input type="text" name="products" [(ngModel)]="task.products">
+    </div>
+    <div *ngIf="editConclusions && !editReason && !editProducts && !editType">
+        <label>{{"conclusions" | translate}}:</label>
+        <input type="text" name="conclusions" [(ngModel)]="task.conclusions">
+    </div>
+    <div class="actions-panel">
+        <div class="edit-content action-button" [ngClass]="{active: editContent}" (click)="changeTab('editContent')">
+            {{"content" | translate}}
         </div>
-        <div *ngIf="editContent && !editType && !editReason && !editProducts && !editConclusions">
-            <label>{{"content" | translate}}:</label>
-            <textarea type="text" name="content" class="content-area" [(ngModel)]="task.content"> </textarea>
+        <div class="edit-type action-button" [ngClass]="{active: editType}" (click)="changeTab('editType')">{{"type" |
+            translate}}
         </div>
-        <div *ngIf="editType && !editReason && !editProducts && !editConclusions">
-            <label>{{"type" | translate}}:</label>
-            <input type="text" name="type" [(ngModel)]="task.type">
+        <div class="edit-reason action-button" [ngClass]="{active: editReason}" (click)="changeTab('editReason')">
+            {{"reason" | translate}}
         </div>
-        <div *ngIf="editReason && !editType && !editProducts && !editConclusions">
-            <label>{{"reason" | translate}}:</label>
-            <input type="text" name="reason" [(ngModel)]="task.reason">
+        <div class="edit-products action-button" [ngClass]="{active: editProducts}" (click)="changeTab('editProducts')">
+            {{"products" | translate}}
         </div>
-        <div *ngIf="editProducts && !editReason && !editType && !editConclusions">
-            <label>{{"products" | translate}}:</label>
-            <input type="text" name="products" [(ngModel)]="task.products">
+        <div class="edit-conclusions action-button" [ngClass]="{active: editConclusions}"
+             (click)="changeTab('editConclusions')">{{"conclusions" | translate}}
         </div>
-        <div *ngIf="editConclusions && !editReason && !editProducts && !editType">
-            <label>{{"conclusions" | translate}}:</label>
-            <input type="text" name="conclusions" [(ngModel)]="task.conclusions">
-        </div>
-        <div class="actions-panel">
-        <div class="edit-content action-button" [ngClass]="{active: editContent}"(click)="changeTab('editContent')">{{"content" | translate}}</div>
-        <div class="edit-type action-button" [ngClass]="{active: editType}" (click)="changeTab('editType')">{{"type" | translate}}</div>
-        <div class="edit-reason action-button" [ngClass]="{active: editReason}" (click)="changeTab('editReason')">{{"reason" | translate}}</div>
-        <div class="edit-products action-button" [ngClass]="{active: editProducts}" (click)="changeTab('editProducts')">{{"products" | translate}}</div>
-        <div class="edit-conclusions action-button" [ngClass]="{active: editConclusions}" (click)="changeTab('editConclusions')">{{"conclusions" | translate}}</div>
-        </div>
-        <button class="create-btn" type="button" (click)="onSave()">{{"submit" | translate}}</button>
-    </form>
+    </div>
+    <button class="create-btn" type="button" (click)="onSave()">{{"submit" | translate}}</button>
+</form>

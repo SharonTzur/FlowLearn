@@ -33,20 +33,25 @@
       padding         : 10px;
       margin-top      : 30px;
       margin-bottom      : 30px;
-      display         : block;
+      display         : inline-block;
       text-align      : center;
       width:200px;
       @include fa-icon(arrow-right);
-
+      &:hover{
+        background-color: #7d4565;
+        cursor:pointer;
+      }
       &:before {
         padding-right: 5px;
+        padding-left: 5px;
+
         color: #fff;
         font-family: 'FontAwesome';
         line-height: 20px;
       }
     }
   }
-}
+  }
 .back-btn{
   color           : white;
   text-decoration : none;
@@ -55,13 +60,44 @@
   padding         : 10px;
   margin-top      : 30px;
   margin-bottom      : 30px;
-  display         : block;
+  display         : inline-block;
   text-align      : center;
   width:200px;
   @include fa-icon(arrow-left);
-
+  &:hover{
+    background-color: #7d4565;
+    cursor:pointer;
+  }
   &:before {
     padding-right: 5px;
+    padding-left: 5px;
+    color: #fff;
+    font-family: 'FontAwesome';
+    line-height: 20px;
+  }
+}
+.add-photo-btn{
+  color           : white;
+  text-decoration : none;
+  border          : 1px solid white;
+  border-radius   : 10px;
+  padding         : 10px;
+  margin-top      : 30px;
+  float:left;
+
+  margin-bottom      : 30px;
+  display         : block;
+  text-align      : center;
+  width:200px;
+  @include fa-icon(camera);
+  &:hover{
+    background-color: #7d4565;
+    cursor:pointer;
+  }
+  &:before {
+    padding-right: 5px;
+    padding-left: 5px;
+
     color: #fff;
     font-family: 'FontAwesome';
     line-height: 20px;
@@ -138,8 +174,23 @@
 label{
   display:block;
 }
+.choice-button{
+  display: inline-block;
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px;
+}
+.ui-autocomplete-items{
+  list-style: none;
+  display: inline-block;
+}
+.ui-autocomplete-item{
+  display: inline-block;
+}
 
-input {
+
+input 	 {
   font-family: 'Assistant','Open Sans', sans-serif;
   direction: rtl;
   text-align:right;
@@ -162,15 +213,6 @@ input {
     font-size: rem(32px);
   }
 
- /* &::placeholder {
-    color: #999;
-    opacity: 1; // firefox native placeholder style has opacity < 1
-  }
-
-  &:focus::placeholder {
-    color: #777;
-    opacity: 1;
-  }*/
 
   // webkit input doesn't inherit font-smoothing from ancestors
   -webkit-font-smoothing: antialiased;
@@ -209,6 +251,10 @@ input {
   text-align      : center;
   background: transparent;
   width: 100%;
+  &:hover{
+    background-color: #7d4565;
+    cursor:pointer;
+  }
   @include fa-icon(paper-plane);
   font-size: rem(24px);
 
@@ -217,6 +263,8 @@ input {
     font-size: rem(32px);
   }
   &:before {
+    padding-left: 5px;
+
     padding-right: 5px;
     color: #fff;
     font-family: 'FontAwesome';

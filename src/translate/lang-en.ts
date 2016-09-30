@@ -16,7 +16,8 @@ export const LANG_EN_TRANS = {
     'hello':'hello',
     'flow learn':'flow learn',
     'add activity': 'add activity',
-    'completed':'completed'
+    'completed':'completed',
+    'add activity photo':'add activity photo'
 
 
 };

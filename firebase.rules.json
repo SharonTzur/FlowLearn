@@ -10,8 +10,8 @@
     },
     "tasks": {
       "$uid": {
-        ".read": "auth !== null && auth.uid === $uid && $auth.uid === '7Z0yut1KjWd6PGoldJq9EUgBFRz1' ",
-        ".write": "auth !== null && auth.uid === $uid && $auth.uid === '7Z0yut1KjWd6PGoldJq9EUgBFRz1'",
+        ".read": true,
+        ".write": true,
         ".indexOn": [
           "completed"
         ]

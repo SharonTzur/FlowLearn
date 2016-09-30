@@ -15,6 +15,7 @@ import {AutoCompleteModule} from 'primeng/primeng';
 import {TaskCreateComponent} from "./components/task-create";
 
 
+
 const routes: Routes = [
     {path: 'tasks', component: TasksComponent, canActivate: [AuthGuard]},
     {path: 'create/:id', component: TaskCreateComponent, canActivate: [AuthGuard]},
@@ -29,6 +30,7 @@ const routes: Routes = [
         TaskListComponent,
         TasksComponent,
         TaskCreateComponent
+
     ],
     imports: [
         CommonModule,

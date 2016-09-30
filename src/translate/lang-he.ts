@@ -16,5 +16,6 @@ export const LANG_HE_TRANS = {
     'hello':'שלום',
     'flow learn':'למידה זורמת',
     'add activity': 'הוסף פעילות',
-    'completed':'הושלם'
+    'completed':'הושלם',
+    'add activity photo':'הוסף תמונה לפעילות'
 };
