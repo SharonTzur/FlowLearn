@@ -15,7 +15,7 @@ import {TranslatePipe} from "../../translate/translate.pipe";
     <a *ngIf="task.$key"  (click)="uploadPhoto=!uploadPhoto" class="add-photo-btn">{{ 'add activity photo' | translate }}</a>
     <task-form [task]="task" (goBackToTasks)="goBackToTasks()" (onChange)="submit($event)"></task-form>
 </div>`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.Default,
     pipes: [KeysPipe, TranslatePipe],
 })
 export class TaskCreateComponent {
