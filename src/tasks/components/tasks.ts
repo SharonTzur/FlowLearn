@@ -1,15 +1,15 @@
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/pluck';
 
-import { Component } from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { TaskService } from '../services/task-service';
+import {Observable} from 'rxjs/Observable';
+import {TaskService} from '../services/task-service';
 import {TranslatePipe} from "../../translate/translate.pipe";
 
 
 @Component({
-  template: `
+    template: `
    
       <div class="g-row">
       <a class="create-btn" (click)="goToCreateMode(null)">{{"add activity" | translate}}</a>
@@ -19,31 +19,35 @@ import {TranslatePipe} from "../../translate/translate.pipe";
       <div  class="g-row">
         <task-list
           [filter]="filter | async"
-          [tasks]="taskService.visibleTasks$"
+          [tasks]="taskService.filteredTasks"
           (remove)="taskService.removeTask($event)"
           (update)="taskService.updateTask($event.task, $event.changes)"></task-list>
       </div>
    
   `,
-  styles: [
-    require('./tasks.scss')
-  ],
-  pipes: [
-      TranslatePipe
-  ]
+    styles: [
+        require('./tasks.scss')
+    ],
+    pipes: [
+        TranslatePipe
+    ], changeDetection: ChangeDetectionStrategy.Default,
+
+
 })
 
 export class TasksComponent {
-  filter: Observable<any>;
+    filter: Observable<any>;
 
-  constructor(public route: ActivatedRoute,public router: Router, public taskService: TaskService) {
-    this.filter = route.params
-      .pluck('completed')
-      .do((value: string) => taskService.filterTasks(value));
-  }
+    constructor(public route: ActivatedRoute, public router: Router, public taskService: TaskService) {
+        this.filter = route.params
+            .pluck('completed')
+            .do((value: string) => taskService.filterTasks(value));
+    }
 
-  goToCreateMode(){
-    this.router.navigate(['/create', 0]);
-  }
+    goToCreateMode() {
+        this.router.navigate(['/create', 0]);
+    }
+
+
 
 }

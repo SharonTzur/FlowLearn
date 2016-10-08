@@ -18,7 +18,7 @@ import { ITask } from '../models/task';
     
     <div class="task-list">
       <task-item
-        *ngFor="let task of tasks | async"
+        *ngFor="let task of tasks"
         [task]="task"
         (remove)="remove.emit(task)"
         (update)="update.emit({task: task, changes: $event})"></task-item>

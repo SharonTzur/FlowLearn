@@ -1,36 +1,30 @@
 <form #form="ngForm">
     <div>
-        <label>{{"title" | translate}}:</label>
-        <input type="text" name="title" [(ngModel)]="task.title">
+        <input placeholder='{{"title" | translate}}' type="text" name="title" [(ngModel)]="task.title">
     </div>
     <div *ngIf="editContent && !editType && !editReason && !editProducts && !editConclusions">
-        <label>{{"content" | translate}}:</label>
-        <textarea type="text" name="content" class="content-area" [(ngModel)]="task.content"> </textarea>
+        <textarea placeholder='{{"content" | translate}}' type="text" name="content" class="content-area" [(ngModel)]="task.content"> </textarea>
     </div>
     <div *ngIf="editType && !editReason && !editProducts && !editConclusions">
-        <label>{{"type" | translate}}:</label>
-        <!--<input type="text" name="type" [(ngModel)]="task.type">-->
+        <input type="text" placeholder='{{"type" | translate}}' name="type" [(ngModel)]="task.type">
 
-        <p-autoComplete  (keydown.Enter)="typeEnter($event)" class="type-autocomplete" minLength="1" name="type"   [multiple]="true" [(ngModel)]="task.type" [suggestions]="typeResults"
+    <!--    <p-autoComplete  (keydown.Enter)="typeEnter($event)" class="type-autocomplete" minLength="1" name="type"   [multiple]="true" [(ngModel)]="task.type" [suggestions]="typeResults"
                         (completeMethod)="searchType($event)" >
             <template let-typeQuery>
                 <div class="ui-helper-clearfix choice-button">
                     {{typeQuery}}
                 </div>
             </template>
-        </p-autoComplete>
+        </p-autoComplete>-->
     </div>
     <div *ngIf="editReason && !editType && !editProducts && !editConclusions">
-        <label>{{"reason" | translate}}:</label>
-        <input type="text" name="reason" [(ngModel)]="task.reason">
+        <input type="text" placeholder='{{"reason" | translate}}' name="reason" [(ngModel)]="task.reason">
     </div>
     <div *ngIf="editProducts && !editReason && !editType && !editConclusions">
-        <label>{{"products" | translate}}:</label>
-        <input type="text" name="products" [(ngModel)]="task.products">
+        <input type="text" placeholder='{{"products" | translate}}' name="products" [(ngModel)]="task.products">
     </div>
     <div *ngIf="editConclusions && !editReason && !editProducts && !editType">
-        <label>{{"conclusions" | translate}}:</label>
-        <input type="text" name="conclusions" [(ngModel)]="task.conclusions">
+        <input type="text" placeholder='{{"conclusions" | translate}}' name="conclusions" [(ngModel)]="task.conclusions">
     </div>
     <div class="actions-panel">
         <div class="edit-content action-button" [ngClass]="{active: editContent}" (click)="changeTab('editContent')">

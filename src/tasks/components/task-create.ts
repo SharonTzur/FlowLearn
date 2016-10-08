@@ -77,7 +77,6 @@ export class TaskCreateComponent {
             };
             this.taskService.createTask(this.newTaskObj).then((updatedTask)=> {
                 this.goBackToTasks();
-
             }, (error)=> {
                 console.log('error: ' + error);
             });
