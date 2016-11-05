@@ -18,6 +18,7 @@ import { ITask } from '../models/task';
     
     <div class="task-list">
       <task-item
+      class="col-md-6"
         *ngFor="let task of tasks"
         [task]="task"
         (remove)="remove.emit(task)"

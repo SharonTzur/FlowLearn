@@ -1,5 +1,4 @@
-@import
-"~minx/src/settings",
+@import "~minx/src/settings",
 "~minx/src/functions",
 "~minx/src/mixins";
 
@@ -7,15 +6,15 @@
 //  TASK-FORM
 //===================================================================
 
-
 .task-form {
-  margin: 40px 0 10px;
+  margin : 40px 0 10px;
 
   @include media-query(540) {
-    margin: 80px 0 20px;
+    margin : 80px 0 20px;
   }
 
 }
+
 .main {
   background     : #6f405c;
   color          : white;
@@ -25,10 +24,10 @@
   &.he {
     direction  : rtl;
     text-align : right;
-    .back-btn{
-      @media screen and(max-width: 640px){
-        width: 49%;
-        height: 70px;
+    .back-btn {
+      @media screen and(max-width : 640px) {
+        width  : 49%;
+        height : 70px;
 
       }
       color           : white;
@@ -37,60 +36,61 @@
       border-radius   : 10px;
       padding         : 10px;
       margin-top      : 30px;
-      margin-bottom      : 30px;
+      margin-bottom   : 30px;
       display         : inline-block;
       text-align      : center;
-      width:200px;
+      width           : 200px;
       @include fa-icon(arrow-right);
-      &:hover{
-        background-color: #7d4565;
-        cursor:pointer;
+      &:hover {
+        background-color : #7d4565;
+        cursor           : pointer;
       }
       &:before {
-        padding-right: 5px;
-        padding-left: 5px;
+        padding-right : 5px;
+        padding-left  : 5px;
 
-        color: #fff;
-        font-family: 'FontAwesome';
-        line-height: 20px;
+        color         : #fff;
+        font-family   : 'FontAwesome';
+        line-height   : 20px;
       }
     }
   }
-  }
+}
 
-.back-btn{
-  color           : white;
+.back-btn { color           : white;
   text-decoration : none;
   border          : 1px solid white;
   border-radius   : 10px;
   padding         : 10px;
   margin-top      : 30px;
-  margin-bottom      : 30px;
-  display         : inline-block;
   text-align      : center;
-  width:200px;
-  @media screen and(max-width: 640px){
-    width: 49%;
-    height: 70px;
-
+  background      : transparent;
+  width           : 48%;
+  display         : inline-block;
+  float          : right;
+  &:hover {
+    background-color : #7d4565;
+    cursor           : pointer;
   }
-  @include fa-icon(arrow-left);
-  &:hover{
-    background-color: #7d4565;
-    cursor:pointer;
+  @include fa-icon(arrow-right);
+  font-size       : rem(24px);
+
+  @include media-query(540) {
+    height    : 61px;
+    font-size : rem(32px);
   }
   &:before {
-    padding-right: 5px;
-    padding-left: 5px;
-    color: #fff;
-    font-family: 'FontAwesome';
-    line-height: 20px;
+    padding-left  : 5px;
+    padding-right : 5px;
+    color         : #fff;
+    font-family   : 'FontAwesome';
+    line-height   : 20px;
   }
 }
 
-.add-photo-btn{
-  @media screen and(max-width: 640px){
-    width: 49%;
+.add-photo-btn {
+  @media screen and(max-width : 640px) {
+    width : 49%;
   }
   color           : white;
   text-decoration : none;
@@ -98,28 +98,29 @@
   border-radius   : 10px;
   padding         : 10px;
   margin-top      : 30px;
-  float:left;
+  float           : left;
 
-  margin-bottom      : 30px;
+  margin-bottom   : 30px;
   display         : block;
   text-align      : center;
-  width:200px;
+  width           : 200px;
   @include fa-icon(camera);
-  &:hover{
-    background-color: #7d4565;
-    cursor:pointer;
+  &:hover {
+    background-color : #7d4565;
+    cursor           : pointer;
   }
   &:before {
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right : 5px;
+    padding-left  : 5px;
 
-    color: #fff;
-    font-family: 'FontAwesome';
-    line-height: 20px;
+    color         : #fff;
+    font-family   : 'FontAwesome';
+    line-height   : 20px;
   }
 }
+
 .actions-panel {
-  text-align:center;
+  text-align : center;
 
   .action-button {
     display       : inline-block;
@@ -131,23 +132,23 @@
     text-align    : center;
     line-height   : 2vw;
     padding-top   : 2vw;
-    @media screen and (max-width: 640px) {
-      width         : 30vw;
-      height        : 30vw;
-      line-height: 10vw;
-      padding-top: 8vw;
-      &:before{
-        font-size: 40px!important;
+    @media screen and (max-width : 640px) {
+      width       : 30vw;
+      height      : 30vw;
+      line-height : 10vw;
+      padding-top : 8vw;
+      &:before {
+        font-size : 40px !important;
 
       }
     }
-    &:hover{
-      background-color: #7d4565;
-      cursor:pointer;
+    &:hover {
+      background-color : #7d4565;
+      cursor           : pointer;
     }
-    &.active{
-      border        : 3px solid white;
-      background-color: #96557b;
+    &.active {
+      border           : 3px solid white;
+      background-color : #96557b;
     }
     &.edit-content {
       @include fa-icon(edit);
@@ -197,74 +198,79 @@
   }
 }
 
-label{
-  display:block;
-}
-.choice-button{
-  display: inline-block;
-  border: 1px solid white;
-  padding: 5px 20px;
-  border-radius: 5px;
-  margin: 5px;
-}
-.ui-autocomplete-items{
-  list-style: none;
-  display: inline-block;
-}
-.ui-autocomplete-item{
-  display: inline-block;
+label {
+  display : block;
 }
 
+.choice-button {
+  display       : inline-block;
+  border        : 1px solid white;
+  padding       : 5px 20px;
+  border-radius : 5px;
+  margin        : 5px;
+}
 
-input 	 {
-  font-family: 'Assistant','Open Sans', sans-serif;
-  direction: rtl;
-  text-align:right;
-  outline: none;
-  border: 1px solid white;
-  width: 100%;
-  height: 50px;
-  font-family: inherit;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  font-weight: 300;
-  color: #fff;
-  background: transparent;
-  border-radius: 10px;
-  padding:10px;
-  font-size: rem(16px);
+.ui-autocomplete-items {
+  list-style : none;
+  display    : inline-block;
+}
+
+.ui-autocomplete-item {
+  display : inline-block;
+}
+
+input, select {
+  font-family            : 'Assistant', 'Open Sans', sans-serif;
+  direction              : rtl;
+  text-align             : right;
+  outline                : none;
+  border                 : 1px solid white;
+  width                  : 100%;
+  height                 : 35px;
+  font-family            : inherit;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-weight            : 300;
+  font-weight            : 300;
+  color                  : #fff;
+  background             : transparent;
+  border-radius          : 10px;
+  padding                : 10px;
+  font-size              : rem(12px);
 
   @include media-query(540) {
-    height: 61px;
-    font-size: rem(32px);
+    height    : 61px;
+    font-size : rem(32px);
   }
 
+  option {
+    color : #7d4565;
+  }
 
   // webkit input doesn't inherit font-smoothing from ancestors
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing : antialiased;
 
   // remove `x`
   &::-ms-clear {
-    display: none;
+    display : none;
   }
 }
-.content-area{
-  width:100%;
-  height: 40vh;
-  background: transparent;
-  border: 1px solid white;
-  color: white;
-  font-size: 1.5rem;
-  outline: none;
-  resize: none;
-  overflow: auto;
-  font-family: 'Assistant','Open Sans', sans-serif;
-  border-radius: 10px;
-  margin-top: 20px;
-  margin-bottom: 30px;
 
+.content-area {
+  width         : 100%;
+  height        : 40vh;
+  background    : transparent;
+  border        : 1px solid white;
+  color         : white;
+  font-size     : 1.5rem;
+  outline       : none;
+  resize        : none;
+  overflow      : auto;
+  font-family   : 'Assistant', 'Open Sans', sans-serif;
+  border-radius : 10px;
+  margin-top    : 20px;
+  margin-bottom : 30px;
 }
-
 
 .create-btn {
   color           : white;
@@ -273,28 +279,27 @@ input 	 {
   border-radius   : 10px;
   padding         : 10px;
   margin-top      : 30px;
-  display         : block;
   text-align      : center;
-  background: transparent;
-  width: 100%;
-  &:hover{
-    background-color: #7d4565;
-    cursor:pointer;
+  background      : transparent;
+  width           : 48%;
+  display         : inline-block;
+  float          : left;
+  &:hover {
+    background-color : #7d4565;
+    cursor           : pointer;
   }
   @include fa-icon(paper-plane);
-  font-size: rem(24px);
+  font-size       : rem(24px);
 
   @include media-query(540) {
-    height: 61px;
-    font-size: rem(32px);
+    height    : 61px;
+    font-size : rem(32px);
   }
   &:before {
-    padding-left: 5px;
-
-    padding-right: 5px;
-    color: #fff;
-    font-family: 'FontAwesome';
-    line-height: 20px;
+    padding-left  : 5px;
+    padding-right : 5px;
+    color         : #fff;
+    font-family   : 'FontAwesome';
+    line-height   : 20px;
   }
 }
-

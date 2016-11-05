@@ -1,6 +1,7 @@
 {
   "rules": {
     "users": {
+      ".indexOn": "email",
       ".read": true,
       ".write": true,
       "$uid": {
@@ -9,6 +10,16 @@
       }
     },
     "tasks": {
+      ".read": true,
+      ".write": true,
+      "$uid": {
+        ".read": true,
+        ".write": true
+
+      }
+    },
+
+    "communities": {
       ".read": true,
       ".write": true,
       "$uid": {

@@ -18,8 +18,8 @@ export class TaskService {
     private filter$: ReplaySubject<any> = new ReplaySubject(1);
     private filteredTasks: any;
     private tasks$: any;
-   /* private filteredTasks$: FirebaseListObservable<ITask[]>;
-    private tasks$: FirebaseListObservable<ITask[]>;*/
+    /* private filteredTasks$: FirebaseListObservable<ITask[]>;
+     private tasks$: FirebaseListObservable<ITask[]>;*/
     db$: any;
     reqId: string;
     actionSuggestions: string[] = ACTION_SUGGESTIONS;
@@ -46,7 +46,7 @@ export class TaskService {
             }
             this.userTasksIds = userTasksIdsArr;
 
-            this.getTasks(this.tasksPath$).subscribe((tasks)=>{
+            this.getTasks(this.tasksPath$).subscribe((tasks)=> {
                 this.tasks$ = tasks;
                 var filteredTasks = [];
                 var tasksIds = this.userTasksIds;
@@ -62,13 +62,8 @@ export class TaskService {
         });
 
 
-
-
         this.storage = firebase.storage();
         this.storageRef = this.storage.ref();
-
-
-
 
 
     }
@@ -80,7 +75,7 @@ export class TaskService {
             }
 
             ref.on('value', value);
-            return (()=>{
+            return (()=> {
                 ref.off('value', value);
 
             })
@@ -116,32 +111,32 @@ export class TaskService {
             partners: [],
             feedback: []
         };
-        task.log = [
-            {
+
+
+        return this.tasksPath$.push(task).then((createdTask)=> {
+            this.tasksPath$.child(`/${createdTask.key}/log`).push( {
                 date: new Date().toLocaleString(),
                 action: 'created',
                 user: this.auth.id
-            }];
-
-        return this.tasksPath$.push(task).then((createdTask)=> {
+            });
             this.userTasks.push({
                 taskId: createdTask.key,
                 relation: 'creator',
-                active: true,
-                log: [
-                    {
-                        date: new Date().toLocaleString(),
-                        action: 'created',
-                        user: this.auth.id
-                    }
-                ]
+                active: true
+            }).then((updated)=>{
+                this.userTasks.child(`/${updated.key}/log`).push({
+                    date: new Date().toLocaleString(),
+                    action: 'created',
+                    user: this.auth.id
+                })
             });
+
         });
     }
 
     removeTask(task: ITask): firebase.Promise<any> {
         return this.tasksPath$.child(task.$key).remove().then(()=> {
-            this.userTasks.orderByChild("taskId").equalTo(task.$key).on("value",(snapshot)=>{
+            this.userTasks.orderByChild("taskId").equalTo(task.$key).on("value", (snapshot)=> {
                 if (snapshot.val() && Object.keys(snapshot.val())[0]) {
                     this.userTasks.child(Object.keys(snapshot.val())[0]).remove();
                 }
@@ -159,8 +154,8 @@ export class TaskService {
         })
     }
 
-    saveImage(file: any, taskId: any) {
-        var imageRef = this.storageRef.child(`tasks-photos/${taskId}.jpg`);
+    saveImage(file: any, path: any) {
+        var imageRef = this.storageRef.child(path);
         imageRef.put(file).then((snapshot) => {
             console.log('Uploaded a blob or file!');
         });

@@ -1,7 +1,22 @@
+
 <form #form="ngForm">
+
+    <select name="community"[(ngModel)]="task.community" class="community-select">
+        <option [value]="null">Select a community</option>
+        <option *ngFor="let community of communitiesIds" [value]="community">{{userService.communitiesArr[community].name}}</option>
+    </select>
+
     <div>
         <input placeholder='{{"title" | translate}}' type="text" name="title" [(ngModel)]="task.title">
     </div>
+    <div>
+    <div *ngIf="uploadPhoto">
+        {{ 'add activity photo' | translate }}
+    </div>
+        <input *ngIf="uploadPhoto" type="file" class="task-image-upload"  (change)="addPhoto($event)">
+        <a *ngIf="task.$key"  (click)="uploadPhoto=!uploadPhoto" class="add-photo-btn"></a>
+    </div>
+
     <div *ngIf="editContent && !editType && !editReason && !editProducts && !editConclusions">
         <textarea placeholder='{{"content" | translate}}' type="text" name="content" class="content-area" [(ngModel)]="task.content"> </textarea>
     </div>
@@ -43,5 +58,7 @@
              (click)="changeTab('editConclusions')">{{"conclusions" | translate}}
         </div>
     </div>
-    <button class="create-btn" type="button" (click)="onSave()">{{"submit" | translate}}</button>
+    <a (click)="goBackToTasksPage()" class="back-btn">{{ 'back to activities' | translate }}</a>
+    <a class="create-btn" type="button" (click)="onSave()">{{"submit" | translate}}</a>
+    <a class="create-btn" type="button" (click)="sendForFeedback()">{{"send for feedback" | translate}}</a>
 </form>

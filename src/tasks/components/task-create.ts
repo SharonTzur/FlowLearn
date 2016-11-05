@@ -10,10 +10,8 @@ import {TranslatePipe} from "../../translate/translate.pipe";
         require('./task-form.scss')
     ],
     template: `<div class="g-row">
-<input *ngIf="uploadPhoto" type="file" class="task-image-upload"  (change)="addPhoto($event)">
-    <a (click)="goBackToTasks()" class="back-btn">{{ 'back to activities' | translate }}</a>
-    <a *ngIf="task.$key"  (click)="uploadPhoto=!uploadPhoto" class="add-photo-btn">{{ 'add activity photo' | translate }}</a>
     <task-form [task]="task" (goBackToTasks)="goBackToTasks()" (onChange)="submit($event)"></task-form>
+     
 </div>`,
     changeDetection: ChangeDetectionStrategy.Default,
     pipes: [KeysPipe, TranslatePipe],
@@ -55,7 +53,8 @@ export class TaskCreateComponent {
                 reason: this.value.reason || "",
                 products: this.value.products || "",
                 conclusions: this.value.conclusions || "",
-                image: this.value.image || ""
+                featuredImage: this.value.featuredImage || "",
+                community: this.value.community || ""
             };
             this.taskService.updateTask(this.task, this.changesObj).then((updatedTask)=> {
                 this.goBackToTasks();
@@ -73,7 +72,8 @@ export class TaskCreateComponent {
                 reason: this.value.reason || "",
                 products: this.value.products || "",
                 conclusions: this.value.conclusions || "",
-                image: this.value.image || ""
+                featuredImage: this.value.featuredImage || "",
+                community: this.value.community || ""
             };
             this.taskService.createTask(this.newTaskObj).then((updatedTask)=> {
                 this.goBackToTasks();
@@ -91,18 +91,5 @@ export class TaskCreateComponent {
         this.router.navigate(['/tasks']);
     }
 
-    addPhoto(event): void {
-        this.taskService.saveImage(event.target.files[0], this.task.$key);
-        this.taskService.updateTask(this.task, {image: `https://firebasestorage.googleapis.com/v0/b/learning-journal.appspot.com/o/tasks-photos%2F${this.task.$key}.jpg?alt=media`}
-        ).then((updatedTask)=> {
-            this.uploadPhoto = false;
-            alert('uploaded successfully');
 
-
-        }, (error)=> {
-            console.log('error: ' + error);
-        });
-
-
-    }
 }

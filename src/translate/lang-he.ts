@@ -11,11 +11,12 @@ export const LANG_HE_TRANS = {
     'reason' : 'סיבה',
     'products': 'תוצרים',
     'conclusions':'מסקנות',
-    'back to activities': 'חזרה לפעילויות',
+    'back to activities': 'ביטול',
     'sign out':'התנתק',
     'hello':'שלום',
     'flow learn':'למידה זורמת',
     'add activity': 'הוסף פעילות',
     'completed':'הושלם',
-    'add activity photo':'הוסף תמונה לפעילות'
+    'add activity photo':'הוסף תמונה לפעילות',
+    'send for feedback':'הגש למשוב'
 };

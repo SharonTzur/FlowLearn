@@ -6,18 +6,21 @@
 //  TASK-ITEM
 //===================================================================
 
+.task-item-wrap{
+  width: 49.7%;
+display: inline-table;
+}
 .task-item {
-
+display:table-cell;
+  vertical-align: middle;
   outline       : none;
   border-bottom : 1px dotted #666;
-  width: 49.7%;
   overflow      : hidden;
   color         : #fff;
   font-size     : rem(18px);
   font-weight   : 300;
   padding: 10px;
-  height: 300px;
-  display: inline-block;
+  height: auto;
 
   @media screen and (max-width : 640px) {
     width: 100%;

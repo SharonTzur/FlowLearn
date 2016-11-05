@@ -11,6 +11,7 @@ import {AppHeaderComponent} from './components/app-header';
 import {TRANSLATION_PROVIDERS} from "../translate/translations";
 import {TranslateService} from "../translate/translate.service";
 import {TranslatePipe} from "../translate/translate.pipe";
+import {UserModule} from "../user/index";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {TranslatePipe} from "../translate/translate.pipe";
         RouterModule.forRoot([], {useHash: false}),
         AuthModule,
         FirebaseModule,
-        TasksModule
+        TasksModule,
+        UserModule
     ],
     providers: [
         TRANSLATION_PROVIDERS, TranslateService

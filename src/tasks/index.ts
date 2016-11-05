@@ -13,6 +13,7 @@ import {AutoFocusDirective} from './directives/autofocus-directive';
 import {TaskService} from './services/task-service';
 import {AutoCompleteModule} from 'primeng/primeng';
 import {TaskCreateComponent} from "./components/task-create";
+import {UserService} from "../user/services/user-service";
 
 
 
@@ -40,7 +41,8 @@ const routes: Routes = [
 
     ],
     providers: [
-        TaskService
+        TaskService,
+        UserService
     ]
 })
 

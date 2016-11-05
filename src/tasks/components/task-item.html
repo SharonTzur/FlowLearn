@@ -1,3 +1,4 @@
+<div class="task-item-wrap">
 <div
   [ngClass]="{'task-item--completed': task.completed, 'task-item--editing': editing}"
   class="task-item"
@@ -65,7 +66,8 @@
     </button>
   </div>
 </div>
-  <div class="task-img">
-    <img [src]="task.image">
+  <div *ngIf="task.featuredImage" class="task-img">
+    <img [src]="task.featuredImage">
   </div>
+</div>
 </div>
